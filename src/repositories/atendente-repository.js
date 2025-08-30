@@ -1,27 +1,30 @@
-
 const Atendente = require('../models/atendente');
 
 class AtendenteRepository {
     async findAll() { 
         return await Atendente.find({ ativo: true }); 
     }
-    async findById(id) { 
-        return await Atendente.findById(id); 
+
+    async findByNumero(numero) { 
+        return await Atendente.findOne({ numero }); 
     }
+
     async create(data) { 
         const obj = new Atendente(data); 
         return await obj.save(); 
     }
-    async update(id, data) { 
-        return await Atendente.findByIdAndUpdate(
-            id, 
+
+    async updateByNumero(numero, data) { 
+        return await Atendente.findOneAndUpdate(
+            { numero },
             data, 
             { new: true, runValidators: true }
         ); 
-        }
-    async delete(id) { 
-        return await Atendente.findByIdAndUpdate(
-            id, 
+    }
+
+    async deleteByNumero(numero) { 
+        return await Atendente.findOneAndUpdate(
+            { numero }, 
             { ativo: false }, 
             { new: true }
         ); 
