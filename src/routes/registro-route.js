@@ -1,4 +1,3 @@
-
 const express = require('express');
 const router = express.Router();
 const RegistroController = require('../controllers/registro-controller');
@@ -13,6 +12,7 @@ const validate = (req, res, next) => {
             message: 'Todos os campos obrigatórios devem ser preenchidos'
         });
     }
+    next();
  };
 
 router.get('/', RegistroController.getAll);
