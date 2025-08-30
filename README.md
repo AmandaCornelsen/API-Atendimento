@@ -4,7 +4,7 @@ A RESTful API for customer service management, built with JavaScript and MongoDB
 
 ---
 
-## 👨‍🎓 Alunos
+## 👨‍🎓 Students
 
 - Amanda Cornelsen - RM97760  
 - Vinicius Shuet - RM98160
