@@ -4,6 +4,13 @@ A RESTful API for customer service management, built with JavaScript and MongoDB
 
 ---
 
+## 👨‍🎓 Alunos
+
+- Amanda Cornelsen - RM97760  
+- Vinicius Shuet - RM98160
+
+---
+
 ## 🚀 Features
 
 Attendants: Manage customer service representatives.
@@ -29,24 +36,25 @@ Insomnia: API client for testing endpoints.
 ---
 
 ## 📂 Project Structure
+```markdown
 API-Atendimento/
 ├── src/
 │   ├── controllers/
-│   │   ├── attendantsController.js
-│   │   ├── ticketsController.js
-│   │   └── recordsController.js
+│   │   ├── attendants-controller.js
+│   │   ├── tickets-controller.js
+│   │   └── records-controller.js
 │   ├── models/
 │   │   ├── Attendant.js
 │   │   ├── Ticket.js
 │   │   └── Record.js
 │   ├── routes/
-│   │   ├── attendantsRoutes.js
-│   │   ├── ticketsRoutes.js
-│   │   └── recordsRoutes.js
-│   └── server.js
+│   │   ├── attendants-routes.js
+│   │   ├── tickets-routes.js
+│   │   └── records-routes.js
+│   └── app.js
 ├── package.json
 └── README.md
-
+```
 ---
 
 ## 📡 API Endpoints
