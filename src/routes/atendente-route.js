@@ -13,6 +13,7 @@ const validate = (req, res, next) => {
             message: 'Todos os campos obrigatórios devem ser preenchidos'
         });
     }
+    next()
 };
 
 router.get('/', AtendenteController.getAll);

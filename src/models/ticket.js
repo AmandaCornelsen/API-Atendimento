@@ -1,21 +1,48 @@
-
 const mongoose = require('mongoose');
+const Counter = require('./counter');
 
 const ticketSchema = new mongoose.Schema({
-    titulo: { 
-        type: String, 
-        required: true, 
-        trim: true 
+    numero: {
+        type: Number,
+        unique: true
     },
-    descricao: { 
-        type: String, 
-        required: true 
+    titulo: {
+        type: String,
+        required: true,
+        trim: true
     },
-    ativo: { 
-        type: Boolean, 
-        default: true 
+    descricao: {
+        type: String,
+        required: true
+    },
+    ativo: {
+        type: Boolean,
+        default: true
     }
-}, { 
+});
+
+ticketSchema.pre('save', async function(next) {
+    if (this.isNew) {
+        const counter = await Counter.findOneAndUpdate(
+            { name: 'ticket' },       
+            { $inc: { seq: 1 } },     
+            { new: true, upsert: true } 
+        );
+        this.numero = counter.seq;
+    }
+    next();
+});
+
+ticketSchema.set('toJSON', {
+    transform: function(doc, ret) {
+        const obj = {
+            id: ret.numero, 
+            titulo: ret.titulo,
+            descricao: ret.descricao,
+            ativo: ret.ativo
+        };
+        return obj;
+    }
 });
 
 module.exports = mongoose.model('Ticket', ticketSchema);

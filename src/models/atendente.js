@@ -2,6 +2,10 @@
 const mongoose = require('mongoose');
 
 const atendenteSchema = new mongoose.Schema({
+    numero: {
+        type: Number,
+        unique: true
+    },
     nome: { 
         type: String, 
         required: true, 
